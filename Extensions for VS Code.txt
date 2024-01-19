@@ -1,0 +1,6 @@
+c# dev kit
+.net isntall tool
+.net extension pack
+nugget gallery
+prettier
+C# Extensions by JosKreativ
