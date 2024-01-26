@@ -1,5 +1,6 @@
 ﻿using api.Dtos.Stock;
 using api.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace api.Mappers
 {
@@ -7,7 +8,7 @@ namespace api.Mappers
     {
         public static StockDto ToStocksDto(this Stock stockModel)
         {
-            
+
             return new StockDto
             {
                 Id = stockModel.Id,
@@ -19,5 +20,19 @@ namespace api.Mappers
                 MarketCap = stockModel.MarketCap
             };
         }
+
+        public static Stock ToStockFromCreateDTO(this CreateStockRequestDto stockDto)
+        {
+            return new Stock
+            {
+                Symbol = stockDto.Symbol,
+                CompanyName = stockDto.CompanyName,
+                Purchase = stockDto.Purchase,
+                LastDiv = stockDto.LastDiv,
+                MarketCap = stockDto.MarketCap,
+                Industry = stockDto.Industry
+            };
+        }
+
     }
 }
