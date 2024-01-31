@@ -1,6 +1,5 @@
 ﻿using api.Dtos.Stock;
 using api.Models;
-using System.Reflection.Metadata.Ecma335;
 
 namespace api.Mappers
 {
@@ -17,7 +16,8 @@ namespace api.Mappers
                 Purchase = stockModel.Purchase,
                 LastDiv = stockModel.LastDiv,
                 Industry = stockModel.Industry,
-                MarketCap = stockModel.MarketCap
+                MarketCap = stockModel.MarketCap,
+                Comments = stockModel.Comments.Select(c => c.ToCommentDto()).ToList()
             };
         }
 

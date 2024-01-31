@@ -1,9 +1,7 @@
 ﻿using api.Data;
-using api.Dtos.Stock;
 using api.Interfaces;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
@@ -29,6 +27,19 @@ namespace api.Controllers
             var commentDto = comments.Select(s => s.ToCommentDto());
 
             return Ok(commentDto);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var comment = await _commentRepository.GetByIdAsync(id);
+
+            if(comment == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(comment.ToCommentDto());
         }
     }
 }
